@@ -11,7 +11,7 @@ from rich.console import Console
 def create_client(api_key, base_url):
     """Create OpenAI client with given API key and base URL"""
     return OpenAI(
-        api_key=api_key or os.getenv("OPENAI_API_KEY"),
+        api_key=api_key or os.getenv("OPENAI_API_KEY", "xxx"), # an invalid key to squash client errors
         base_url=base_url or os.getenv("OPENAI_BASE_URL"),
     )
 
