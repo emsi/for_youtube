@@ -10,4 +10,4 @@ Small apps and scripts that I feature in my YouTube content
 - 🎲 Randomized challenge phrases to prevent overfitting
 - 🔄 Real-time thought process streaming
 
-*Deep Thinking Documentation*: See [`2025-01-30_deep_thinking/README.md`](2025-01-30_deep_thinking/README.md) for implementation details and usage instructions.
+*Deep Thinking Documentation*: See [`2025-01-30_deep_thinking`](2025-01-30_deep_thinking) for implementation details and usage instructions.
