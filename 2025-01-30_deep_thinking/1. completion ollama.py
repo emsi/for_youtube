@@ -24,9 +24,11 @@ def ask(question: str, assistant_message: str | None = None):
     response = client.chat.completions.create(
         model=os.getenv("OPENAI_MODEL"),
         messages=messages,
+        stream=True,
     )
 
-    print(response.choices[0].message.content)
+    for chunk in response:
+        print(chunk.choices[0].delta.content, end="")
     print()
 
 
