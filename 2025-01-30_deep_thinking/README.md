@@ -47,7 +47,7 @@ The assistant employs a chain-of-thought prompting strategy that leverages LLM m
 │ Initial Think │ → │ Thought Nudge │ → │ Final Think   │
 │ <thinking>    │   │ (But wait...) │   │ </thinking>   │
 └───────────────┘   └───────────────┘   └───────────────┘
-  │                      │                     │
+  │                        │                       │
   └─▶ Model Reasoning  ◀─┴─▶ Deeper Analysis ◀─┴─▶ Final Synthesis
 ```
 
