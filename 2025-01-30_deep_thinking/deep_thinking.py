@@ -49,7 +49,7 @@ def get_deepseek_response(
             yield chunk.choices[0].delta.content
 
 
-def think_rounds(client, *, model, messages, rounds=3):
+def think_rounds(client, *, model, messages, rounds):
     """Yield multiple rounds of thinking and responding"""
 
     thinking_injections: list = [
@@ -116,12 +116,17 @@ Only after that outline your well structured answer.""",
 
 @click.command()
 @click.argument("question", required=False)
-@click.option("--rounds", default=3, help="Number of thinking rounds.")
+@click.option("--rounds", default=3, show_default=True, help="Number of thinking rounds.")
 @click.option(
     "--model",
     help="Model to use for the Deep Thinking Assistant, e.g. gpt-4o-mini, deepseek-chat, qwen, etc.",
 )
-@click.option("--baseline_url", default=None, help="Base URL for the OpenAI SDK compatible API.")
+@click.option(
+    "--baseline_url",
+    default=None,
+    show_default=True,
+    help="Base URL for the OpenAI SDK compatible API.",
+)
 @click.option("--api_key", default=None, help="API key for the OpenAI SDK.")
 def main(rounds, question, model, baseline_url, api_key):
     """Deep Thinking Assistant CLI"""
