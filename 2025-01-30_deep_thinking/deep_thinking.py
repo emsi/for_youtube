@@ -10,9 +10,15 @@ from rich.console import Console
 
 def create_client(api_key, base_url):
     """Create OpenAI client with given API key and base URL"""
+    api_key = api_key or os.getenv("OPENAI_API_KEY")
+    base_url = base_url or os.getenv("OPENAI_BASE_URL")
+    if not api_key:
+        raise click.ClickException("OPENAI_API_KEY environment variable is not set.")
+    if not base_url:
+        raise click.ClickException("OPENAI_BASE_URL environment variable is not set.")
     return OpenAI(
-        api_key=api_key or os.getenv("OPENAI_API_KEY", "xxx"), # an invalid key to squash client errors
-        base_url=base_url or os.getenv("OPENAI_BASE_URL"),
+        api_key=api_key,
+        base_url=base_url,
     )
 
 
