@@ -63,7 +63,7 @@ Usage: deep_thinking.py [OPTIONS] [QUESTION]
   Deep Thinking Assistant CLI
 
 Options:
-  --rounds INTEGER     Number of thinking rounds.
+  --rounds INTEGER     Number of thinking rounds.  [default: 3]
   --model TEXT         Model to use for the Deep Thinking Assistant, e.g.
                        gpt-4o-mini, deepseek-chat, qwen, etc.
   --baseline_url TEXT  Base URL for the OpenAI SDK compatible API.
