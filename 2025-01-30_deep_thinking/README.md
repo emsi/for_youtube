@@ -3,6 +3,35 @@
 This script simulates deep thinking akin to reasoning models like r1 or o1 but with settable number of rounds.
 It works with OpenAI compatible blackends like Ollama or DeepSeek's API but not with official OpenAI as it does not allow for the assistent message continuation trick.
 
+## Environment Setup and Usage Modes
+
+Before running the Deep Thinking Agent, ensure the following environment variables are set:
+
+- **OPENAI_API_KEY**: Your API key for accessing the OpenAI-compatible API.
+- **OPENAI_BASE_URL**: The base URL for the API endpoint.
+- *(Optional)* **OPENAI_MODEL**: The model to use (default is `gpt-4o-mini` if not provided).
+
+The agent supports two modes of operation:
+
+- **Interactive Mode**: Run without a question argument. The application will prompt you to type questions in real time.
+- **Noninteractive Mode**: Provide a question as a command-line argument, and the application will process it and exit.
+
+### Usage
+```
+Usage: deep_thinking.py [OPTIONS] [QUESTION]
+
+  Deep Thinking Assistant CLI
+
+Options:
+  --rounds INTEGER     Number of thinking rounds.  [default: 3]
+  --model TEXT         Model to use for the Deep Thinking Assistant, e.g.
+                       gpt-4o-mini, deepseek-chat, qwen, etc.
+  --baseline_url TEXT  Base URL for the OpenAI SDK compatible API.
+  --api_key TEXT       API key for the OpenAI SDK.
+  --help               Show this message and exit.
+```
+
+
 ## Deep Thinking Mechanism
 
 The assistant employs a chain-of-thought prompting strategy that leverages LLM message continuation capabilities through 3 key phases:
@@ -55,18 +84,3 @@ The technique exploits LLMs' pattern completion instincts while maintaining cont
 - 🎲 Randomly selected challenge phrases prevent pattern overfitting
 
 > 💡 Pro Tip: Combine with local models via Ollama for long free thinking loops!
-
-# Usage
-```
-Usage: deep_thinking.py [OPTIONS] [QUESTION]
-
-  Deep Thinking Assistant CLI
-
-Options:
-  --rounds INTEGER     Number of thinking rounds.  [default: 3]
-  --model TEXT         Model to use for the Deep Thinking Assistant, e.g.
-                       gpt-4o-mini, deepseek-chat, qwen, etc.
-  --baseline_url TEXT  Base URL for the OpenAI SDK compatible API.
-  --api_key TEXT       API key for the OpenAI SDK.
-  --help               Show this message and exit.
-```
