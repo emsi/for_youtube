@@ -32,7 +32,23 @@ def main(
     if not model:
         raise ValueError("The OPENAI_MODEL environment variable is not set.")
     
-    results = []
+    # Determine output filename and check if it already exists.
+    base_dir = os.path.dirname(os.path.abspath(topics_path))
+    out_filename = os.path.join(base_dir, f"interrogate_{model}.csv")
+    if os.path.exists(out_filename):
+        if overwrite is True:
+            # Force overwrite without asking.
+            pass
+        elif overwrite is False:
+            raise RuntimeError(f"Output file '{out_filename}' already exists and --no-overwrite was specified.")
+        else:
+            # If interactive, ask for confirmation
+            if sys.stdin.isatty():
+                if not typer.confirm(f"File '{out_filename}' already exists. Overwrite?", default=False):
+                    typer.echo("Aborted.")
+                    raise typer.Exit(code=0)
+            else:
+                raise RuntimeError(f"Output file '{out_filename}' already exists and no terminal is available to confirm. Use --overwrite to force overwrite.")
     for _, row in df_topics.iterrows():
         # Build prompt to ask for a short answer
         sample_prompt = row["sample_prompt"]
@@ -65,20 +81,6 @@ def main(
     base_dir = os.path.dirname(os.path.abspath(topics_path))
     out_filename = os.path.join(base_dir, f"interrogate_{model}.csv")
     df_results = pd.DataFrame(results)
-    if os.path.exists(out_filename):
-        if overwrite is True:
-            # Force overwrite without asking.
-            pass
-        elif overwrite is False:
-            raise RuntimeError(f"Output file '{out_filename}' already exists and --no-overwrite was specified.")
-        else:
-            # overwrite is None, so ask if we're on a terminal.
-            if sys.stdin.isatty():
-                if not typer.confirm(f"File '{out_filename}' already exists. Overwrite?", default=False):
-                    typer.echo("Aborted.")
-                    raise typer.Exit(code=0)
-            else:
-                raise RuntimeError(f"Output file '{out_filename}' already exists and no terminal is available to confirm. Use --overwrite to force overwrite.")
     df_results.to_csv(out_filename, index=False)
     print(f"\n##########\nResults saved to {out_filename}\n##########\n")
 
