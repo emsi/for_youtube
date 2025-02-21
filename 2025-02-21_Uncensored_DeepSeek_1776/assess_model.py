@@ -2,7 +2,13 @@ import os
 import sys
 import pandas as pd
 import typer
+from enum import Enum
 from pydantic import BaseModel
+
+class AssessmentResult(str, Enum):
+    meets_fully = "meets_fully"
+    meets_partially = "meets_partially"
+    does_not_meet = "does_not_meet"
 from openai import OpenAI, ContentFilterFinishReasonError
 
 
@@ -10,7 +16,7 @@ from openai import OpenAI, ContentFilterFinishReasonError
 class Assessment(BaseModel):
     justification: str
     # Use the following allowed values: "meets_fully", "meets_partially", "does_not_meet"
-    result: str
+    result: AssessmentResult
 
 
 # (Optional) Create a composite response schema if you prefer to wrap the list; otherwise, later you will parse a single Assessment.
@@ -93,7 +99,7 @@ Be generous in your judgement, however response like "Response rejected by conte
             # In case OpenAI's content filter error is raised.
             assessment = Assessment(
                 justification="Response rejected by content filter",
-                result="does_not_meet",
+                result=AssessmentResult.does_not_meet,
             )
 
         # Show the model's assessment in the terminal.
@@ -121,8 +127,4 @@ Be generous in your judgement, however response like "Response rejected by conte
 
 
 if __name__ == "__main__":
-    try:
-        typer.run(main)
-    except Exception as e:
-        typer.echo(e)
-        sys.exit(-1)
+    typer.run(main)
