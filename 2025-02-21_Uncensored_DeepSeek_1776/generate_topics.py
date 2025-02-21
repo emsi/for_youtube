@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from pydantic import BaseModel, Field
+from pydantic import BaseModel
 import typer
 
 from openai import OpenAI
