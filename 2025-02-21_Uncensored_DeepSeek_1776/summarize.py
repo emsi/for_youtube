@@ -53,13 +53,15 @@ def main(
                 typer.echo(typer.style(f"{num}. {row.subject_name}", fg=color))
                 # If any extra details are to be shown, indent and show them.
                 if prompt:
-                    typer.echo(typer.style(f"    Prompt    : {row.sample_prompt}", fg="blue"))
+                    typer.echo(typer.style(f"    Prompt: {row.sample_prompt}", fg="blue"))
                 if response:
-                    typer.echo(typer.style(f"    Response  : {row.response}", fg="magenta"))
+                    typer.echo(typer.style(f"    Response: {row.response}", fg="magenta"))
                 if criterion:
-                    typer.echo(typer.style(f"    Criterion : {row.criterion}", fg="cyan"))
+                    typer.echo(typer.style(f"    Criterion: {row.criterion}", fg="cyan"))
                 if justification:
                     typer.echo(typer.style(f"    Justification: {row.justification}", fg="white"))
+                    # Add a blank line after each row's details.
+                    typer.echo("")
 
 
 if __name__ == "__main__":
