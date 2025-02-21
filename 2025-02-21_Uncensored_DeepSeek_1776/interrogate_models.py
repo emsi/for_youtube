@@ -94,7 +94,7 @@ def main(
             {
                 "subject_name": row["subject_name"],
                 "sample_prompt": row["sample_prompt"],
-                "model": model,
+                "model": safe_model,
                 "response": response_text,
                 "criterion": row["criterion"],
             }
@@ -102,7 +102,7 @@ def main(
 
     # Save results to file interrogate_{model}.txt
     base_dir = os.path.dirname(os.path.abspath(topics_path))
-    out_filename = os.path.join(base_dir, f"interrogate_{model}.csv")
+    out_filename = os.path.join(base_dir, f"interrogate_{safe_model}.csv")
     df_results = pd.DataFrame(results)
     df_results.to_csv(out_filename, index=False)
     typer.echo(f"\n##########\nResults saved to {out_filename}\n##########\n")
