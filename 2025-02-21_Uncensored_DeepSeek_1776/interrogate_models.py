@@ -3,7 +3,7 @@ import os
 import sys
 import pandas as pd
 import typer
-from openai import ContentFilterFinishReasonError, OpenAI
+from openai import ContentFilterFinishReasonError, OpenAI, BadRequestError
 from werkzeug.utils import secure_filename
 
 
@@ -84,6 +84,14 @@ def main(
             # Extract the full response text
             response_text = response.choices[0].message.content
         except ContentFilterFinishReasonError:
+            # Fallback if the response was rejected by the content filter
+            response_text = "Response rejected by content filter"
+        except BadRequestError as e:
+            if "Content Exists Risk" in str(e):
+                # Record as a refusal to cooperate due to censorship
+                response_text = "Refusal to cooperate (censorship)"
+            else:
+                raise
             # Fallback if the response was rejected by the content filter
             response_text = "Response rejected by content filter"
 
