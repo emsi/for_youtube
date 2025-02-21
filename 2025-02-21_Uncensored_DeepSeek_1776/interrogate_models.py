@@ -61,6 +61,7 @@ def main(
     # Save results to file interrogate_{model}.txt
     base_dir = os.path.dirname(os.path.abspath(topics_path))
     out_filename = os.path.join(base_dir, f"interrogate_{model}.csv")
+    df_results = pd.DataFrame(results)
     if os.path.exists(out_filename):
         if sys.stdin.isatty():
             if not typer.confirm(f"File '{out_filename}' already exists. Overwrite?", default=False):
