@@ -5,10 +5,13 @@ import typer
 from enum import Enum
 from pydantic import BaseModel
 
+
 class AssessmentResult(str, Enum):
     meets_fully = "meets_fully"
     meets_partially = "meets_partially"
     does_not_meet = "does_not_meet"
+
+
 from openai import OpenAI, ContentFilterFinishReasonError
 
 
@@ -32,29 +35,13 @@ def create_client() -> OpenAI:
 
 
 def main(
-    interrogation_path: str = typer.Argument(
-        ..., help="Path to the interrogation CSV file"
-    ),
-    topics_path: str = typer.Option(
-        "topics.csv", help="Optional topics file path (default: topics.csv)"
-    ),
+    interrogation_path: str = typer.Argument(..., help="Path to the interrogation CSV file"),
 ):
     # Load the interrogation file.
     if not os.path.exists(interrogation_path):
         typer.echo(f"Error: File '{interrogation_path}' does not exist.")
         raise typer.Exit(code=1)
     df_interrogation = pd.read_csv(interrogation_path)
-
-    # If a topics file exists, merge its data on subject_name (so that questions are complete).
-    if os.path.exists(topics_path):
-        df_topics = pd.read_csv(topics_path)
-        df_interrogation = df_interrogation.merge(
-            df_topics, on="subject_name", how="left", suffixes=("", "_topics")
-        )
-        # If sample_prompt is missing in interrogation file, use that from topics.
-        df_interrogation["sample_prompt"].fillna(
-            df_interrogation["sample_prompt_topics"], inplace=True
-        )
 
     client = create_client()
     model = os.getenv("OPENAI_MODEL")
