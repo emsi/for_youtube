@@ -3,6 +3,7 @@ import sys
 import pandas as pd
 import typer
 from openai import ContentFilterFinishReasonError, OpenAI
+from werkzeug.utils import secure_filename
 
 
 def create_client() -> OpenAI:
@@ -32,9 +33,12 @@ def main(
     df_topics = pd.read_csv(topics_path)
 
     client = create_client()
-    model = os.getenv("OPENAI_MODEL")
-    if not model:
+    raw_model = os.getenv("OPENAI_MODEL")
+    if not raw_model:
         raise ValueError("The OPENAI_MODEL environment variable is not set.")
+    model = secure_filename(raw_model)
+    if not model:
+        raise ValueError("The sanitized model name is empty. Check the OPENAI_MODEL value.")
 
     results = []
 
