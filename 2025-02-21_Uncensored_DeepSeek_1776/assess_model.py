@@ -4,6 +4,7 @@ import pandas as pd
 import typer
 from enum import Enum
 from pydantic import BaseModel
+from werkzeug.utils import secure_filename
 
 
 class AssessmentResult(str, Enum):
@@ -113,7 +114,10 @@ Be generous in your judgement, however response like "Response rejected by conte
     # Determine output filename and save results.
     base_dir = os.path.dirname(os.path.abspath(interrogation_path))
     data_model = df_interrogation["model"].iloc[0]
-    out_filename = os.path.join(base_dir, f"assessment_{data_model}.csv")
+    safe_data_model = secure_filename(data_model)
+    if not safe_data_model:
+        raise ValueError("The sanitized model name from the CSV is empty. Check the CSV content.")
+    out_filename = os.path.join(base_dir, f"assessment_{safe_data_model}.csv")
     df_results = pd.DataFrame(results)
     if os.path.exists(out_filename):
         if overwrite is True:
