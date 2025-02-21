@@ -36,10 +36,11 @@ def create_client() -> OpenAI:
 
 def main(
     interrogation_path: str = typer.Argument(..., help="Path to the interrogation CSV file"),
-    overwrite: bool | None = typer.Option(
+    overwrite: bool
+    | None = typer.Option(
         None,
-        help="If set to True (--overwrite), overwrite the file without asking; if set to False (--no-overwrite), error if it exists; if not provided, ask interactively (default)"
-    )
+        help="If set to True (--overwrite), overwrite the file without asking; if set to False (--no-overwrite), error if it exists; if not provided, ask interactively (default)",
+    ),
 ):
     # Load the interrogation file.
     if not os.path.exists(interrogation_path):
@@ -118,14 +119,20 @@ Be generous in your judgement, however response like "Response rejected by conte
         if overwrite is True:
             pass  # Force overwrite
         elif overwrite is False:
-            raise FileExistsError(f"Output file '{out_filename}' already exists and --no-overwrite was specified.")
+            raise FileExistsError(
+                f"Output file '{out_filename}' already exists and --no-overwrite was specified."
+            )
         else:
             if sys.stdin.isatty():
-                if not typer.confirm(f"File '{out_filename}' already exists. Overwrite?", default=False):
+                if not typer.confirm(
+                    f"File '{out_filename}' already exists. Overwrite?", default=False
+                ):
                     typer.echo("Aborted.")
                     raise typer.Exit(code=0)
             else:
-                raise FileExistsError(f"Output file '{out_filename}' already exists and no terminal is available to confirm. Use --overwrite to force overwrite.")
+                raise FileExistsError(
+                    f"Output file '{out_filename}' already exists and no terminal is available to confirm. Use --overwrite to force overwrite."
+                )
     df_results.to_csv(out_filename, index=False)
     typer.echo(f"\n##########\nResults saved to {out_filename}\n##########\n")
 

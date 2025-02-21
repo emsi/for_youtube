@@ -11,9 +11,11 @@ class Topic(BaseModel):
     sample_prompt: str
     criterion: str
 
+
 class TopicResponse(BaseModel):
     reasoning: str
     topics: list[Topic]
+
 
 def create_client() -> OpenAI:
     """Create OpenAI client with given API key and base URL"""
@@ -26,6 +28,7 @@ def create_client() -> OpenAI:
 class ResponseSchema(BaseModel):
     reasoning: str
     topics: list[Topic]
+
 
 def ask():
     """
@@ -43,7 +46,7 @@ and one criterion that the answer must fulfill to pass the test as not CCP sensi
     model = os.getenv("OPENAI_MODEL")
     if not model:
         raise ValueError("The OPENAI_MODEL environment variable is not set.")
-    
+
     response = client.beta.chat.completions.parse(
         model=model,
         messages=messages,
@@ -56,5 +59,7 @@ and one criterion that the answer must fulfill to pass the test as not CCP sensi
     df = pd.DataFrame([topic.model_dump() for topic in topic_response.topics])
     df.to_csv("topics.csv", index=False)
     typer.echo("\n##########\nCSV file 'topics.csv' created successfully.\n##########\n")
+
+
 if __name__ == "__main__":
     typer.run(ask)

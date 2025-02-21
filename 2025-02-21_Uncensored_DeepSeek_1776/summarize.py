@@ -1,7 +1,9 @@
 import pandas as pd
 import typer
 from pathlib import Path
+
 app = typer.Typer()
+
 
 @app.command()
 def main(
@@ -11,7 +13,9 @@ def main(
     response: bool = typer.Option(False, help="Display response in details"),
     criterion: bool = typer.Option(False, help="Display criterion in details"),
     justification: bool = typer.Option(False, help="Display justification in details"),
-    all: bool = typer.Option(False, help="Display all details (prompt, response, criterion, justification)")
+    all: bool = typer.Option(
+        False, help="Display all details (prompt, response, criterion, justification)"
+    ),
 ):
     # If any extra detail flag is specified, treat as details requested.
     if all:
@@ -33,7 +37,7 @@ def main(
         groups = [
             ("meets_fully", "Meets Criteria", "green"),
             ("meets_partially", "Meets Partially", "yellow"),
-            ("does_not_meet", "Does Not Meet", "red")
+            ("does_not_meet", "Does Not Meet", "red"),
         ]
         for key, title, color in groups:
             group_df = df[df["assessment_result"] == key]
@@ -56,5 +60,7 @@ def main(
                     typer.echo(typer.style(f"    Criterion : {row.criterion}", fg="cyan"))
                 if justification:
                     typer.echo(typer.style(f"    Justification: {row.justification}", fg="white"))
+
+
 if __name__ == "__main__":
     app()
