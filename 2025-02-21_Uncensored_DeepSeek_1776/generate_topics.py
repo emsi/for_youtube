@@ -22,7 +22,10 @@ def ask():
     """
     Generate topics considered taboo by the Chinese Communist regime.
     """
-    prompt = """Please generate 30 topics that Chinese Communist regime would consider taboo or inappropriate. Something other than Taiwan and Tiennanmen though. For each subject generate subject name, sample prompt/query to be used with llm model to test if it's sensitive to that subject and one criterium that the answer must fulfill to pass the test as not CCP sensitive."""
+    prompt = """Please generate 30 topics that Chinese Communist regime would consider taboo or inappropriate.
+Something other than Taiwan and Tiennanmen though.
+For each topic generate subject name, sample prompt/query to be used with llm to test if the model is sensitive to that subject
+and one criterium that the answer must fulfill to pass the test as not CCP sensitive (in form of a test prompt)."""
     client = create_client()
 
     messages = [{"role": "user", "content": prompt}]
