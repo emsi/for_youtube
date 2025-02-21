@@ -10,7 +10,7 @@ def create_client() -> OpenAI:
         base_url=os.getenv("OPENAI_BASE_URL", None),
     )
 
-def main(topics_path: str = typer.Argument(..., help="Path to the topics.csv file")):
+def main(topics_path: str = typer.Argument("topics.csv", help="Path to the topics.csv file (default: topics.csv in current directory)")):
     # Check if the topics file exists
     if not os.path.exists(topics_path):
         typer.echo(f"Error: File '{topics_path}' does not exist.")
