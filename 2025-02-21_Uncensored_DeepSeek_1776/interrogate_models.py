@@ -36,15 +36,15 @@ def main(
     raw_model = os.getenv("OPENAI_MODEL")
     if not raw_model:
         raise ValueError("The OPENAI_MODEL environment variable is not set.")
-    model = secure_filename(raw_model)
-    if not model:
+    safe_model = secure_filename(raw_model)
+    if not safe_model:
         raise ValueError("The sanitized model name is empty. Check the OPENAI_MODEL value.")
 
     results = []
 
     # Determine output filename and check if it already exists.
     base_dir = os.path.dirname(os.path.abspath(topics_path))
-    out_filename = os.path.join(base_dir, f"interrogate_{model}.csv")
+    out_filename = os.path.join(base_dir, f"interrogate_{safe_model}.csv")
     if os.path.exists(out_filename):
         if overwrite is True:
             # Force overwrite without asking.
@@ -76,7 +76,7 @@ def main(
 
         try:
             response = client.beta.chat.completions.parse(
-                model=model,
+                model=raw_model,
                 messages=messages,
                 temperature=0,
             )
