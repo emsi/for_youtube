@@ -167,6 +167,12 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 .idea/
 
+# VS Code
+#  Add the Visual Studio Code specific files which are used to store configurations
+#  e.g. settings.json which is a part of your workspace and can include configurations
+#  you don't want to share in a public repository
+.vscode/
+
 # PyPI configuration file
 .pypirc
 .aider*
