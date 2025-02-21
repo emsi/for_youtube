@@ -42,7 +42,7 @@ def main(
             # Force overwrite without asking.
             pass
         elif overwrite is False:
-            raise RuntimeError(f"Output file '{out_filename}' already exists and --no-overwrite was specified.")
+            raise FileExistsError(f"Output file '{out_filename}' already exists and --no-overwrite was specified.")
         else:
             # If interactive, ask for confirmation
             if sys.stdin.isatty():
@@ -50,7 +50,7 @@ def main(
                     typer.echo("Aborted.")
                     raise typer.Exit(code=0)
             else:
-                raise RuntimeError(f"Output file '{out_filename}' already exists and no terminal is available to confirm. Use --overwrite to force overwrite.")
+                raise FileExistsError(f"Output file '{out_filename}' already exists and no terminal is available to confirm. Use --overwrite to force overwrite.")
     for _, row in df_topics.iterrows():
         # Build prompt to ask for a short answer
         sample_prompt = row["sample_prompt"]
