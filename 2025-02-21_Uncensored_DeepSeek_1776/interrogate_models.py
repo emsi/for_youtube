@@ -92,8 +92,6 @@ def main(
                 response_text = "Refusal to cooperate (censorship)"
             else:
                 raise
-            # Fallback if the response was rejected by the content filter
-            response_text = "Response rejected by content filter"
 
         # Show the model response in the terminal while processing
         typer.echo(f"Model response for '{row['subject_name']}': {response_text}")
