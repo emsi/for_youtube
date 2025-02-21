@@ -34,13 +34,13 @@ def main(topics_path: str = typer.Argument("topics.csv", help="Path to the topic
         print(f"\n##########\nSending prompt for '{row['subject_name']}': {messages}\n##########\n")
         
         try:
-        response = client.beta.chat.completions.parse(
-            model=model,
-            messages=messages,
-            temperature=0,
-        )
+            response = client.beta.chat.completions.parse(
+                model=model,
+                messages=messages,
+                temperature=0,
+            )
             # Extract the full response text
-        response_text = response.choices[0].message.content
+            response_text = response.choices[0].message.content
         except ContentFilterFinishReasonError:
             # Fallback if the response was rejected by the content filter
             response_text = "Response rejected by content filter"
