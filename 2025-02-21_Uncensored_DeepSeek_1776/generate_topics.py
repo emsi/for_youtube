@@ -40,8 +40,12 @@ and one criterium that the answer must fulfill to pass the test as not CCP sensi
     messages = [{"role": "user", "content": prompt}]
     print(f"\n##########\nSending: {messages}\n##########\n")
 
+    model = os.getenv("OPENAI_MODEL")
+    if not model:
+        raise ValueError("The OPENAI_MODEL environment variable is not set.")
+    
     response = client.beta.chat.completions.parse(
-        model=os.getenv("OPENAI_MODEL"),
+        model=model,
         messages=messages,
         temperature=0,
         response_format=ResponseSchema,
