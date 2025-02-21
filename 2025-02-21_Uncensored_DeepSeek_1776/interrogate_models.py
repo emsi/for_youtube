@@ -76,19 +76,27 @@ def main(
         )
 
         try:
-            response = client.beta.chat.completions.parse(
+            stream_response = client.beta.chat.completions.parse(
                 model=raw_model,
                 messages=messages,
                 temperature=0,
+                stream=True,
             )
-            # Extract the full response text
-            response_text = response.choices[0].message.content
+            response_text = ""
+            for chunk in stream_response:
+                # Retrieve the chunk content if available
+                chunk_content = ""
+                if hasattr(chunk.choices[0], "delta") and isinstance(chunk.choices[0].delta, dict):
+                    chunk_content = chunk.choices[0].delta.get("content", "")
+                response_text += chunk_content
+                # Print the received chunk immediately without a newline
+                typer.echo(chunk_content, nl=False)
+            # Ensure a final newline after the streaming output
+            typer.echo("")
         except ContentFilterFinishReasonError:
-            # Fallback if the response was rejected by the content filter
             response_text = "Response rejected by content filter"
         except BadRequestError as e:
             if "Content Exists Risk" in str(e):
-                # Record as a refusal to cooperate due to censorship
                 response_text = "Refusal to cooperate (censorship)"
             else:
                 raise
