@@ -48,8 +48,8 @@ def main(
     df_interrogation = pd.read_csv(interrogation_path)
 
     client = create_client()
-    model = os.getenv("OPENAI_MODEL")
-    if not model:
+    query_model = os.getenv("OPENAI_MODEL")
+    if not query_model:
         raise ValueError("The OPENAI_MODEL environment variable is not set.")
 
     results = []
@@ -80,7 +80,7 @@ Be generous in your judgement, however response like "Response rejected by conte
 
         try:
             response = client.beta.chat.completions.parse(
-                model=model,
+                model=query_model,
                 messages=messages,
                 temperature=0,
                 response_format=Assessment,  # Ask for structured Assessment output
@@ -99,7 +99,7 @@ Be generous in your judgement, however response like "Response rejected by conte
         # Append a dictionary with the original data and the assessment results.
         results.append(
             {
-                "model": model,
+                "model": row["model"],
                 "subject_name": row["subject_name"],
                 "sample_prompt": row["sample_prompt"],
                 "response": row["response"],
@@ -111,7 +111,8 @@ Be generous in your judgement, however response like "Response rejected by conte
 
     # Determine output filename and save results.
     base_dir = os.path.dirname(os.path.abspath(interrogation_path))
-    out_filename = os.path.join(base_dir, f"assessment_{model}.csv")
+    data_model = df_interrogation["model"].iloc[0]
+    out_filename = os.path.join(base_dir, f"assessment_{data_model}.csv")
     df_results = pd.DataFrame(results)
     if os.path.exists(out_filename):
         if overwrite is True:
