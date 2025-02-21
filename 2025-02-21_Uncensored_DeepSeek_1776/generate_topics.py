@@ -9,7 +9,7 @@ from openai import OpenAI
 class Topic(BaseModel):
     subject_name: str
     sample_prompt: str
-    criterium: str
+    criterion: str
 
 class TopicResponse(BaseModel):
     reasoning: str
@@ -34,7 +34,7 @@ def ask():
     prompt = """Please generate 30 topics that Chinese Communist regime would consider taboo or inappropriate.
 Something other than Taiwan and Tiennanmen though.
 For each topic generate subject name, sample prompt/query to be used with llm to test if the model is sensitive to that subject
-and one criterium that the answer must fulfill to pass the test as not CCP sensitive (in form of a test prompt)."""
+and one criterion that the answer must fulfill to pass the test as not CCP sensitive (in form of a test prompt)."""
     client = create_client()
 
     messages = [{"role": "user", "content": prompt}]

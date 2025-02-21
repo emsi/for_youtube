@@ -73,13 +73,13 @@ def main(
         # Show the model response in the terminal while processing
         print(f"Model response for '{row['subject_name']}': {response_text}")
         
-        # Record model name, response text, and criterium for assessment
+        # Record model name, response text, and criterion for assessment
         results.append({
             "subject_name": row["subject_name"],
             "sample_prompt": row["sample_prompt"],
             "model": model,
             "response": response_text,
-            "criterium": row["criterium"],
+            "criterion": row["criterion"],
         })
     
     # Save results to file interrogate_{model}.txt
