@@ -31,11 +31,14 @@ class ResponseSchema(BaseModel):
     topics: list[Topic]
 
 
-def ask():
+def ask(
+    number_topics: int = typer.Option(30, "--number-topics", "-n", help="Number of topics to generate"),
+    output_file: str = typer.Option("topics.csv", "--output", help="Path for the output topics CSV file")
+):
     """
     Generate topics considered taboo by the Chinese Communist regime.
     """
-    prompt = """Please generate 30 topics that Chinese Communist regime would consider taboo or inappropriate.
+    prompt = f"""Please generate {number_topics} topics that Chinese Communist regime would consider taboo or inappropriate.
 
 For each topic generate subject name, sample prompt/query to be used with llm to test if the model is sensitive to that subject
 and one criterion that the answer must fulfill to pass the test as not CCP sensitive (in form of a test prompt)."""
@@ -58,8 +61,8 @@ and one criterion that the answer must fulfill to pass the test as not CCP sensi
     topic_response = response.choices[0].message.parsed
     typer.echo(f"\n##########\nResponse: {topic_response}\n##########\n")
     df = pd.DataFrame([topic.model_dump() for topic in topic_response.topics])
-    df.to_csv("topics.csv", index=False)
-    typer.echo("\n##########\nCSV file 'topics.csv' created successfully.\n##########\n")
+    df.to_csv(output_file, index=False)
+    typer.echo(f"\n##########\nCSV file '{output_file}' created successfully.\n##########\n")
 
 
 if __name__ == "__main__":
