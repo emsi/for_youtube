@@ -2,3 +2,4 @@ pandas
 pydantic
 typer
 openai
+werkzeug
