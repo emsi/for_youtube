@@ -27,11 +27,6 @@ def main(
     df = pd.read_csv(assessment_path)
     total = len(df)
     counts = df["assessment_result"].value_counts().to_dict()
-    typer.echo("\nAssessment Statistics:")
-    for result in ["meets_fully", "meets_partially", "does_not_meet"]:
-        count = counts.get(result, 0)
-        percentage = (count / total) * 100 if total > 0 else 0
-        typer.echo(f"  {result}: {count} ({percentage:.1f}%)")
     if details:
         # Define a mapping from assessment_result to heading and color.
         groups = [
@@ -62,6 +57,11 @@ def main(
                     typer.echo(typer.style(f"    Justification: {row.justification}", fg="white"))
                     # Add a blank line after each row's details.
                     typer.echo("")
+    typer.echo("\nAssessment Statistics:")
+    for result in ["meets_fully", "meets_partially", "does_not_meet"]:
+        count = counts.get(result, 0)
+        percentage = (count / total) * 100 if total > 0 else 0
+        typer.echo(f"  {result}: {count} ({percentage:.1f}%)")
 
 
 if __name__ == "__main__":
