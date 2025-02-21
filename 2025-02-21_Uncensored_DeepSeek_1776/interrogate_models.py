@@ -32,6 +32,8 @@ def main(
     if not model:
         raise ValueError("The OPENAI_MODEL environment variable is not set.")
     
+    results = []
+    
     # Determine output filename and check if it already exists.
     base_dir = os.path.dirname(os.path.abspath(topics_path))
     out_filename = os.path.join(base_dir, f"interrogate_{model}.csv")
