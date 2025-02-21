@@ -112,7 +112,7 @@ Be generous in your judgement, however response like "Response rejected by conte
     # Determine output filename and save results.
     base_dir = os.path.dirname(os.path.abspath(interrogation_path))
     out_filename = os.path.join(base_dir, f"assessment_{model}.csv")
-    if os.path.exists(out_filename):
+    df_results = pd.DataFrame(results)
         if overwrite is True:
             pass  # Force overwrite
         elif overwrite is False:
