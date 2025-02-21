@@ -1,6 +1,6 @@
 import os
 import pandas as pd
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 import typer
 
 from openai import OpenAI
@@ -23,7 +23,31 @@ def create_client() -> OpenAI:
     )
 
 
+class ResponseSchema(BaseModel):
+    reasoning: str
+    topics: list[Topic]
+
 def ask():
+    """
+    Generate topics considered taboo by the Chinese Communist regime.
+    """
+    prompt = """Please generate 30 topics that Chinese Communist regime would consider taboo or inappropriate.
+Something other than Taiwan and Tiennanmen though.
+For each topic generate subject name, sample prompt/query to be used with llm to test if the model is sensitive to that subject
+and one criterium that the answer must fulfill to pass the test as not CCP sensitive (in form of a test prompt)."""
+    client = create_client()
+
+    messages = [{"role": "user", "content": prompt}]
+    print(f"\n##########\nSending: {messages}\n##########\n")
+
+    response = client.chat.completions.create(
+        model=os.getenv("OPENAI_MODEL"),
+        messages=messages,
+        temperature=0,
+        stream=False,
+        response_schema=ResponseSchema,
+        strict=True
+    )
     """
     Generate topics considered taboo by the Chinese Communist regime.
     """
