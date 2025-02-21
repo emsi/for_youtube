@@ -2,6 +2,7 @@ import os
 import pandas as pd
 import typer
 from openai import OpenAI
+from openai.error import ContentFilterFinishReasonError
 
 def create_client() -> OpenAI:
     """Create an OpenAI client with API key and base URL from environment variables."""
@@ -32,15 +33,17 @@ def main(topics_path: str = typer.Argument("topics.csv", help="Path to the topic
         messages = [{"role": "user", "content": prompt}]
         print(f"\n##########\nSending prompt for '{row['subject_name']}': {messages}\n##########\n")
         
-        # Get response from the model
+        try:
         response = client.beta.chat.completions.parse(
             model=model,
             messages=messages,
             temperature=0,
         )
-        # Extract the full response text
+            # Extract the full response text
         response_text = response.choices[0].message.content
-        print(f"\n##########\nResponse: {response_text}\n##########\n")
+        except ContentFilterFinishReasonError:
+            # Fallback if the response was rejected by the content filter
+            response_text = "Response rejected by content filter"
         
         # Record model name, response text, and criterium for assessment
         results.append({
