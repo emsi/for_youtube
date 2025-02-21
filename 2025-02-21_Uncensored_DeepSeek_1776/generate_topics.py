@@ -51,10 +51,8 @@ and one criterium that the answer must fulfill to pass the test as not CCP sensi
         response_format=ResponseSchema,
     )
 
-    response_content = response.choices[0].message.parsed
-    print(f"\n##########\nResponse: {response_content}\n##########\n")
-
-    topic_response = TopicResponse.parse_raw(response_content)
+    topic_response = response.choices[0].message.parsed
+    print(f"\n##########\nResponse: {topic_response}\n##########\n")
     df = pd.DataFrame([topic.dict() for topic in topic_response.topics])
     df.to_csv("topics.csv", index=False)
     print("\n##########\nCSV file 'topics.csv' created successfully.\n##########\n")
