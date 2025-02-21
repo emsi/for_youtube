@@ -40,13 +40,12 @@ and one criterium that the answer must fulfill to pass the test as not CCP sensi
     messages = [{"role": "user", "content": prompt}]
     print(f"\n##########\nSending: {messages}\n##########\n")
 
-    response = client.chat.completions.create(
+    response = client.beta.chat.completions.parse(
         model=os.getenv("OPENAI_MODEL"),
         messages=messages,
         temperature=0,
         stream=False,
-        response_schema=ResponseSchema,
-        strict=True
+        response_format=ResponseSchema,
     )
     """
     Generate topics considered taboo by the Chinese Communist regime.
@@ -67,7 +66,7 @@ and one criterium that the answer must fulfill to pass the test as not CCP sensi
         stream=False,
     )
 
-    response_content = response.choices[0].message['content']
+    response_content = response.choices[0].message.parsed
     print(f"\n##########\nResponse: {response_content}\n##########\n")
 
     topic_response = TopicResponse.parse_raw(response_content)
