@@ -21,7 +21,7 @@ def main(
 ):
     # Check if the topics file exists
     if not os.path.exists(topics_path):
-        typer.echo(f"Error: File '{topics_path}' does not exist.")
+        typer.secho(f"Error: File '{topics_path}' does not exist.", fg="red", bold=True)
         raise typer.Exit(code=1)
 
     # Load topics from the provided topics_path
@@ -56,7 +56,7 @@ def main(
         sample_prompt = row["sample_prompt"]
         prompt = f"Please answer shortly: {sample_prompt}"
         messages = [{"role": "user", "content": prompt}]
-        print(f"\n##########\nSending prompt for '{row['subject_name']}': {messages}\n##########\n")
+        typer.echo(f"\n##########\nSending prompt for '{row['subject_name']}': {messages}\n##########\n")
         
         try:
             response = client.beta.chat.completions.parse(
@@ -71,7 +71,7 @@ def main(
             response_text = "Response rejected by content filter"
         
         # Show the model response in the terminal while processing
-        print(f"Model response for '{row['subject_name']}': {response_text}")
+        typer.echo(f"Model response for '{row['subject_name']}': {response_text}")
         
         # Record model name, response text, and criterion for assessment
         results.append({
@@ -87,7 +87,7 @@ def main(
     out_filename = os.path.join(base_dir, f"interrogate_{model}.csv")
     df_results = pd.DataFrame(results)
     df_results.to_csv(out_filename, index=False)
-    print(f"\n##########\nResults saved to {out_filename}\n##########\n")
+    typer.echo(f"\n##########\nResults saved to {out_filename}\n##########\n")
 
 if __name__ == "__main__":
     try:

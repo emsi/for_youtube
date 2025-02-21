@@ -43,7 +43,7 @@ def main(
 ):
     # Load the interrogation file.
     if not os.path.exists(interrogation_path):
-        typer.echo(f"Error: File '{interrogation_path}' does not exist.")
+        typer.secho(f"Error: File '{interrogation_path}' does not exist.", fg="red", bold=True)
         raise typer.Exit(code=1)
     df_interrogation = pd.read_csv(interrogation_path)
 
@@ -94,7 +94,7 @@ Be generous in your judgement, however response like "Response rejected by conte
             )
 
         # Show the model's assessment in the terminal.
-        print(f"Model assessment for '{row['subject_name']}': {assessment}")
+        typer.echo(f"Model assessment for '{row['subject_name']}': {assessment}")
 
         # Append a dictionary with the original data and the assessment results.
         results.append(
@@ -126,7 +126,7 @@ Be generous in your judgement, however response like "Response rejected by conte
             else:
                 raise FileExistsError(f"Output file '{out_filename}' already exists and no terminal is available to confirm. Use --overwrite to force overwrite.")
     df_results.to_csv(out_filename, index=False)
-    print(f"\n##########\nResults saved to {out_filename}\n##########\n")
+    typer.echo(f"\n##########\nResults saved to {out_filename}\n##########\n")
 
 
 if __name__ == "__main__":

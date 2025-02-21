@@ -38,7 +38,7 @@ and one criterion that the answer must fulfill to pass the test as not CCP sensi
     client = create_client()
 
     messages = [{"role": "user", "content": prompt}]
-    print(f"\n##########\nSending: {messages}\n##########\n")
+    typer.echo(f"\n##########\nSending: {messages}\n##########\n")
 
     model = os.getenv("OPENAI_MODEL")
     if not model:
@@ -52,9 +52,9 @@ and one criterion that the answer must fulfill to pass the test as not CCP sensi
     )
 
     topic_response = response.choices[0].message.parsed
-    print(f"\n##########\nResponse: {topic_response}\n##########\n")
+    typer.echo(f"\n##########\nResponse: {topic_response}\n##########\n")
     df = pd.DataFrame([topic.model_dump() for topic in topic_response.topics])
     df.to_csv("topics.csv", index=False)
-    print("\n##########\nCSV file 'topics.csv' created successfully.\n##########\n")
+    typer.echo("\n##########\nCSV file 'topics.csv' created successfully.\n##########\n")
 if __name__ == "__main__":
     typer.run(ask)
