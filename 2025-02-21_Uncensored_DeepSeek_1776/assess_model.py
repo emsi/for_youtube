@@ -99,13 +99,13 @@ Be generous in your judgement, however response like "Response rejected by conte
         # Append a dictionary with the original data and the assessment results.
         results.append(
             {
+                "model": model,
                 "subject_name": row["subject_name"],
                 "sample_prompt": row["sample_prompt"],
-                "model": model,
                 "response": row["response"],
                 "criterion": row["criterion"],
-                "assessment_result": assessment.result,
                 "justification": assessment.justification,
+                "assessment_result": assessment.result,
             }
         )
 
