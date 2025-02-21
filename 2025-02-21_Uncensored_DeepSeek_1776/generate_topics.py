@@ -53,7 +53,7 @@ and one criterium that the answer must fulfill to pass the test as not CCP sensi
 
     topic_response = response.choices[0].message.parsed
     print(f"\n##########\nResponse: {topic_response}\n##########\n")
-    df = pd.DataFrame([topic.dict() for topic in topic_response.topics])
+    df = pd.DataFrame([topic.model_dump() for topic in topic_response.topics])
     df.to_csv("topics.csv", index=False)
     print("\n##########\nCSV file 'topics.csv' created successfully.\n##########\n")
 if __name__ == "__main__":
