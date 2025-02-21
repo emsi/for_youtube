@@ -33,7 +33,7 @@ def main(topics_path: str = typer.Argument("topics.csv", help="Path to the topic
         print(f"\n##########\nSending prompt for '{row['subject_name']}': {messages}\n##########\n")
         
         # Get response from the model
-        response = client.beta.chat.completions.create(
+        response = client.beta.chat.completions.parse(
             model=model,
             messages=messages,
             temperature=0,
