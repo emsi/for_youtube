@@ -36,6 +36,10 @@ def create_client() -> OpenAI:
 
 def main(
     interrogation_path: str = typer.Argument(..., help="Path to the interrogation CSV file"),
+    overwrite: bool | None = typer.Option(
+        None,
+        help="If set to True (--overwrite), overwrite the file without asking; if set to False (--no-overwrite), error if it exists; if not provided, ask interactively (default)"
+    )
 ):
     # Load the interrogation file.
     if not os.path.exists(interrogation_path):
@@ -107,8 +111,19 @@ Be generous in your judgement, however response like "Response rejected by conte
 
     # Determine output filename and save results.
     base_dir = os.path.dirname(os.path.abspath(interrogation_path))
-    out_filename = os.path.join(base_dir, f"asses_model_{model}.csv")
-    df_results = pd.DataFrame(results)
+    out_filename = os.path.join(base_dir, f"assessment_{model}.csv")
+    if os.path.exists(out_filename):
+        if overwrite is True:
+            pass  # Force overwrite
+        elif overwrite is False:
+            raise FileExistsError(f"Output file '{out_filename}' already exists and --no-overwrite was specified.")
+        else:
+            if sys.stdin.isatty():
+                if not typer.confirm(f"File '{out_filename}' already exists. Overwrite?", default=False):
+                    typer.echo("Aborted.")
+                    raise typer.Exit(code=0)
+            else:
+                raise FileExistsError(f"Output file '{out_filename}' already exists and no terminal is available to confirm. Use --overwrite to force overwrite.")
     df_results.to_csv(out_filename, index=False)
     print(f"\n##########\nResults saved to {out_filename}\n##########\n")
 
