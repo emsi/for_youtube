@@ -76,7 +76,7 @@ def main(
         )
 
         try:
-            stream_response = client.beta.chat.completions.parse(
+            stream_response = client.beta.chat.completions.create(
                 model=raw_model,
                 messages=messages,
                 temperature=0,
