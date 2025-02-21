@@ -90,4 +90,8 @@ def main(
     print(f"\n##########\nResults saved to {out_filename}\n##########\n")
 
 if __name__ == "__main__":
-    typer.run(main)
+    try:
+        typer.run(main)
+    except FileExistsError as e:
+        typer.echo(e)
+        sys.exit(-1)
