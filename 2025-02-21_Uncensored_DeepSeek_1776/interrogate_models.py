@@ -84,13 +84,11 @@ def main(
             )
             response_text = ""
             for chunk in stream_response:
-                # Retrieve the chunk content if available
-                chunk_content = ""
-                if hasattr(chunk.choices[0], "delta") and isinstance(chunk.choices[0].delta, dict):
-                    chunk_content = chunk.choices[0].delta.get("content", "")
-                response_text += chunk_content
-                # Print the received chunk immediately without a newline
-                typer.echo(chunk_content, nl=False)
+                if chunk.choices[0].delta.content is not None:
+                    chunk_content = chunk.choices[0].delta.content
+                    response_text += chunk_content
+                    # Print the received chunk immediately without a newline
+                    typer.echo(chunk_content, nl=False)
             # Ensure a final newline after the streaming output
             typer.echo("")
         except ContentFilterFinishReasonError:
