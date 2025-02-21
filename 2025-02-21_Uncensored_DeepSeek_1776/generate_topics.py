@@ -6,9 +6,14 @@ import typer
 from openai import OpenAI
 
 
+class Topic(BaseModel):
+    subject_name: str
+    sample_prompt: str
+    criterium: str
+
 class TopicResponse(BaseModel):
     reasoning: str
-    topics: list[dict[str, str]]
+    topics: list[Topic]
 
 def create_client() -> OpenAI:
     """Create OpenAI client with given API key and base URL"""
@@ -42,7 +47,7 @@ and one criterium that the answer must fulfill to pass the test as not CCP sensi
     print(f"\n##########\nResponse: {response_content}\n##########\n")
 
     topic_response = TopicResponse.parse_raw(response_content)
-    df = pd.DataFrame(topic_response.topics)
+    df = pd.DataFrame([topic.dict() for topic in topic_response.topics])
     df.to_csv("topics.csv", index=False)
     print("\n##########\nCSV file 'topics.csv' created successfully.\n##########\n")
 if __name__ == "__main__":
