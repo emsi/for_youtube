@@ -70,6 +70,9 @@ def main(
             # Fallback if the response was rejected by the content filter
             response_text = "Response rejected by content filter"
         
+        # Show the model response in the terminal while processing
+        print(f"Model response for '{row['subject_name']}': {response_text}")
+        
         # Record model name, response text, and criterium for assessment
         results.append({
             "subject_name": row["subject_name"],
