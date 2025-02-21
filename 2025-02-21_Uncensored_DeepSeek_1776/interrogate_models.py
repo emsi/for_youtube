@@ -1,8 +1,8 @@
 import os
 import pandas as pd
 import typer
-from openai import OpenAI
-from openai.error import ContentFilterFinishReasonError
+from openai import ContentFilterFinishReasonError, OpenAI
+
 
 def create_client() -> OpenAI:
     """Create an OpenAI client with API key and base URL from environment variables."""
