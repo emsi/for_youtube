@@ -113,7 +113,7 @@ Be generous in your judgement, however response like "Response rejected by conte
     base_dir = os.path.dirname(os.path.abspath(interrogation_path))
     out_filename = os.path.join(base_dir, f"assessment_{model}.csv")
     df_results = pd.DataFrame(results)
-        if overwrite is True:
+    if overwrite is True:
             pass  # Force overwrite
         elif overwrite is False:
             raise FileExistsError(f"Output file '{out_filename}' already exists and --no-overwrite was specified.")
