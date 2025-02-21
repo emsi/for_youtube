@@ -47,6 +47,8 @@ def main(topics_path: str = typer.Argument("topics.csv", help="Path to the topic
         
         # Record model name, response text, and criterium for assessment
         results.append({
+            "subject_name": row["subject_name"],
+            "sample_prompt": row["sample_prompt"],
             "model": model,
             "response": response_text,
             "criterium": row["criterium"],
@@ -54,7 +56,7 @@ def main(topics_path: str = typer.Argument("topics.csv", help="Path to the topic
     
     # Save results to file interrogate_{model}.txt
     base_dir = os.path.dirname(os.path.abspath(topics_path))
-    out_filename = os.path.join(base_dir, f"interrogate_{model}.txt")
+    out_filename = os.path.join(base_dir, f"interrogate_{model}.csv")
     df_results = pd.DataFrame(results)
     df_results.to_csv(out_filename, index=False)
     print(f"\n##########\nResults saved to {out_filename}\n##########\n")
