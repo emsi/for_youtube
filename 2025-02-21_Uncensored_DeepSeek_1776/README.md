@@ -5,13 +5,13 @@
 This project is designed to evaluate censorship in language models by automatically generating sensitive topics, interrogating the model on these topics, assessing its responses against predefined criteria, and finally summarizing the overall performance. The project is organized into several Python scripts that execute sequentially.
 
 
-> ## ⚠️ Required Environment Variables
-> 
-> - **`OPENAI_API_KEY`**: Your API key for OpenAI.
-> - **`OPENAI_BASE_URL`**: *(Optional)* The base URL for the OpenAI API.
-> - **`OPENAI_MODEL`**: The identifier of the model to be queried.
-> 
-> **Ensure these variables are defined in your shell or through an `.env` file before running the scripts.**
+## ⚠️ Required Environment Variables
+
+- **`OPENAI_API_KEY`**: Your API key for OpenAI.
+- **`OPENAI_BASE_URL`**: *(Optional)* The base URL for the OpenAI API.
+- **`OPENAI_MODEL`**: The identifier of the model to be queried.
+
+**Ensure these variables are defined in your shell or through an `.env` file before running the scripts.**
 
 > ### Quick Execution with UV
 > 
