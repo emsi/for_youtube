@@ -61,4 +61,4 @@ Make sure these variables are correctly defined in your shell or via an `.env` f
 
   The overall workflow of the Censorship Benchmark is illustrated in the diagram below. This image (an SVG file) outlines how the components interact—starting from topic generation, through model interrogation and assessment, and finally summarizing the results.
 
-  ![Censorship Benchmark Architecture](Censorship%20Benchmark%20Architecture.drawio.svg)
+  ![Censorship Benchmark Architecture](Censorship_Benchmark_Architecture.svg)
