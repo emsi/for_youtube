@@ -4,7 +4,6 @@
 
 This project is designed to evaluate censorship in language models by automatically generating sensitive topics, interrogating the model on these topics, assessing its responses against predefined criteria, and finally summarizing the overall performance. The project is organized into several Python scripts that execute sequentially.
 
-All scripts include the shebang `#!/usr/bin/env python3` so they can be executed directly. Dependencies are listed in the `requirements.txt` file.
 
 > ### Quick Execution with UV
 > 
@@ -15,6 +14,9 @@ All scripts include the shebang `#!/usr/bin/env python3` so they can be executed
 > ```
 > 
 > UV is a modern, high-performance Python package manager and installer written in Rust, offering significant improvements in speed, reliability, and dependency resolution.
+
+### Execution with pip
+All scripts include the shebang `#!/usr/bin/env python3` so they can be executed directly. Dependencies are listed in the `requirements.txt` file.
 
 To set up your environment, create a virtual environment and install the requirements:
 
