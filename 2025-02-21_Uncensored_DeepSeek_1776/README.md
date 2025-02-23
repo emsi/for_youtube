@@ -1,5 +1,7 @@
 # Uncensored DeepSeek
 
+> **Project Note:** This project was made for the YouTube video "[DeepSeek 1776: Wolność Słowa - Chińska Rewolucja Bez cenzury!](https://www.youtube.com/watch?v=6Dpq0ctjM1)".
+
 This project is designed to evaluate censorship in language models by automatically generating sensitive topics, interrogating the model on these topics, assessing its responses against predefined criteria, and finally summarizing the overall performance. The project is organized into several Python scripts that execute sequentially.
 
 All scripts include the shebang `#!/usr/bin/env python3` so they can be executed directly. Dependencies are listed in the `requirements.txt` file. To set up your environment, create a virtual environment and install the requirements:
