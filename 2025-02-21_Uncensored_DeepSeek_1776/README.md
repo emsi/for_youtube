@@ -6,7 +6,6 @@ All scripts include the shebang `#!/usr/bin/env python3` so they can be executed
 
 ```bash
 python3 -m venv venv
-source venv/bin/activate  # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
 ```
 
