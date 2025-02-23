@@ -4,6 +4,16 @@
 # dependencies = [
 #     "pandas",
 #     "typer",
+#     "pydantic",
+#     "werkzeug",
+#     "openai",
+# ]
+# ///
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pandas",
+#     "typer",
 #     "openai",
 #     "werkzeug",
 # ]
