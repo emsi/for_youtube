@@ -1,6 +1,6 @@
 # Uncensored DeepSeek
 
-> **Project Note:** This project was made for the YouTube video "[DeepSeek 1776: Wolność Słowa - Chińska Rewolucja Bez cenzury!](https://www.youtube.com/watch?v=6Dpq0ctjM1)".
+> **Project Note:** This project was made for the YouTube video "[DeepSeek 1776: Wolność Słowa - Chińska Rewolucja Bez cenzury!](https://www.youtube.com/watch?v=6Dpq0ctjM1s)".
 
 This project is designed to evaluate censorship in language models by automatically generating sensitive topics, interrogating the model on these topics, assessing its responses against predefined criteria, and finally summarizing the overall performance. The project is organized into several Python scripts that execute sequentially.
 
