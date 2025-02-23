@@ -14,5 +14,5 @@ Small apps and scripts that I feature in my YouTube content
 
 ### Uncensored DeepSeek 1776
 
-This project, made for the YouTube video "[DeepSeek 1776: Wolność Słowa - Chińska Rewolucja Bez cenzury!](https://www.youtube.com/watch?v=6Dpq0ctjM1)", is designed to evaluate censorship in language models through topic generation, model interrogation, assessment, and summarization.  
+This project, made for the YouTube video "[DeepSeek 1776: Wolność Słowa - Chińska Rewolucja Bez cenzury!](https://www.youtube.com/watch?v=6Dpq0ctjM1s)", is designed to evaluate censorship in language models through topic generation, model interrogation, assessment, and summarization.  
 *For more details, please see the [2025-02-21_Uncensored_DeepSeek_1776](./2025-02-21_Uncensored_DeepSeek_1776) directory.*
