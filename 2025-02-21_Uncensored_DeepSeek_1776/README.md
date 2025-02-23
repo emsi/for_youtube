@@ -5,6 +5,13 @@
 This project is designed to evaluate censorship in language models by automatically generating sensitive topics, interrogating the model on these topics, assessing its responses against predefined criteria, and finally summarizing the overall performance. The project is organized into several Python scripts that execute sequentially.
 
 
+**Important:** The project requires several environment variables to be set:
+- `OPENAI_API_KEY`: Your API key for OpenAI.
+- `OPENAI_BASE_URL`: (Optional) The base URL for the OpenAI API.
+- `OPENAI_MODEL`: The identifier of the model to be queried.
+  
+Make sure these variables are correctly defined in your shell or via an `.env` file as appropriate.
+
 > ### Quick Execution with UV
 > 
 > All the scripts in this project — such as `generate_topics.py`, `interrogate_model.py`, `assess_model.py`, and `summarize.py` — can be run directly using [UV](https://docs.astral.sh/uv/). For example, to run the topic generator, execute:
@@ -24,13 +31,6 @@ To set up your environment, create a virtual environment and install the require
 python3 -m venv venv
 pip install -r requirements.txt
 ```
-
-**Important:** The project requires several environment variables to be set:
-- `OPENAI_API_KEY`: Your API key for OpenAI.
-- `OPENAI_BASE_URL`: (Optional) The base URL for the OpenAI API.
-- `OPENAI_MODEL`: The identifier of the model to be queried.
-  
-Make sure these variables are correctly defined in your shell or via an `.env` file as appropriate.
 
 ## Script Overview
 
