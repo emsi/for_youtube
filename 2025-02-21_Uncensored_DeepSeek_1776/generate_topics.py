@@ -1,4 +1,13 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pandas",
+#     "pydantic",
+#     "typer",
+#     "openai",
+# ]
+# ///
 import os
 import pandas as pd
 from pydantic import BaseModel

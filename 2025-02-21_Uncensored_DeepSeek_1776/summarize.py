@@ -1,4 +1,11 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.12"
+# dependencies = [
+#     "pandas",
+#     "typer",
+# ]
+# ///
 import pandas as pd
 import typer
 from pathlib import Path
