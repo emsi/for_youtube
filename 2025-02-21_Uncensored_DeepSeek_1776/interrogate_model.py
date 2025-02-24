@@ -9,15 +9,6 @@
 #     "openai",
 # ]
 # ///
-# /// script
-# requires-python = ">=3.12"
-# dependencies = [
-#     "pandas",
-#     "typer",
-#     "openai",
-#     "werkzeug",
-# ]
-# ///
 import os
 import sys
 import pandas as pd
