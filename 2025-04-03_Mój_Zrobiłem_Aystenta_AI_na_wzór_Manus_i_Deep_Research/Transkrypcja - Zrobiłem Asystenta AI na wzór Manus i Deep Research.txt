@@ -1,0 +1,126 @@
+Cześć!
+Ostatnio pojawiło się w mediach trochę doniesień na temat Manusa, takiego magicznego asystenta AI, opartego o Clauda, tutaj niektórzy piszą 3.5, niektórzy 3.7, nie kilka innych modeli.
+Podobno narzędzie to potrafi robić różne magiczne rzeczy, jak piszą jego autorzy, można je wykorzystywać właśnie do researcha, do...
+różnych saden życza codziennego, nie wiem, zamawianie pizzy, czy planowanie wycieczki do Japonii.
+Może też zajmować się analizą danych, uczyć, edukować, zwiększać naszą produktywność.
+rozliczne możliwości.
+Niestety problem jest taki, że narzędzie nie jest dostępny dla wszystkich.
+W zasadzie jest dostępny nie wiadomo dla kogo.
+Trzeba być na jakiejś specjalnej liście.
+Jest super ekskluzywne, więc wszyscy się je rają.
+Tak naprawdę nikt nie jest w stanie zweryfikować co ono potrafi.
+A prawda jest taka, że dokładnie takie same możliwości, a nawet większe, możemy mieć za supełną darmochę, nie odpalając żadnych wiamek w klaudzie, nie subskrybując się do żadnych dziwnych chińskich platform, żadnych dziwnych chińskich firm, nie wysyłając im danych naszych, nie wysyłając im naszych pieniędzy.
+No w ogóle nie tracąc czasu na głupoty, tylko robiąc fajne, ciekawe rzeczy, a to wszystko dzięki MCP, czyli takiemu fajnemu protokołami wymyślonemu przez Antropika, który pozwala na integrowanie różnych narzędzi z modelami LLM.
+I o tym właśnie dzisiaj będzie w filmie.
+Ale najpierw krótki montaż pokazujący jakie rzeczy można osiągnąć, łącząc modele językowe z różnymi aplikacjami poprzez MCP.
+Polskie filmy
+Tak, dobrze widzieliście.
+To wszystko zostało stworzone przez AI, przez modele.
+Dzięki właśnie pośrednictwu MCP, które umożliwiło podłączenie LLMów do takich narzędzi jak Unity, czyli platformy silnika do tworzenia gier.
+Blender'a, znowu szczytnika, studia do tworzenia obiektów i animacji 3D, Ableton'a, czyli Digital Audio Workstation do do tworzenia muzyki, ale też istnieją MCP do Brousera do przeklądarki, tak żeby nasz model był w stanie wchodzić w interakcję z internetem z różnymi stronami internetowymi, też z Shell'em, wykonywać komendy, zarządzać tym.
+Tutaj warto nadmienić, że dobrym pomysłem jest zsandboksowanie tego, żeby ten element nie ganiał po naszym komputerze.
+Tak samo z dostępem do plików, do poczty, kalendarza, slaka itd.
+Pokażę kilka screenshotów z różnych artykułów, tylko powiem o tym jak to działa.
+A w prawym kurnym rogu będę starał się wyświetlać QR-kody, tak żebyście byli w stanie do tych samych materiałów też ewentualnie się dostać i obejrzeć.
+Tak jak nadmieniłem MCP jest określenie czasami taki USB do alelemów.
+Jest to poniekąd trafne porównanie, gdyż jest to tylko protoku, tak?
+On pozwala komunikować się różnym aplikacjom w zunifikowany sposób, dzięki temu pisząc jeden rodzaj integracji, jedną integrację możemy spodziewać się, że będzie ona działała w wielu miejscach.
+Do tej pory tradycyjnie, gdy pisaliśmy aplikację zbyt rozstaniemy lelemów,
+No do każdego systemu trzeba było się oddzielnie integrować, używać oddzielnych API.
+Opisaliśmy coś w jednym miejscu, potem nie bardzo chciało to chodzić w innym miejscu, trzeba było przepisywać.
+No było to skomplikowane, jest to skomplikowane, jeśli ktoś nadal to w ten sposób robi.
+MCP za niewielką cenę, bo oczywiście cena jest to pewien narzut na protokół, pewne ograniczenia tego akurat standardu.
+Pozwala nam to zunifikować.
+Dzięki temu mamy dostęp też do dużych ilości klientów, gdyż architektura MCP składa się z
+serwera, czyli serwera MCP, to jest coś, co chcielibyśmy mianę plug-inu.
+W MCP to się nazywa serwer, tak naprawdę w normalnym świecie nazywalibyśmy to plug-inami oraz klienta MCP, czyli aplikacji, której używamy do interakcji z alelemem.
+Klientów może być wielu, najpopularniejszymi klientami są oczywiście Cloud Desktop,
+który był pierwszym klientem MCP, gdyż jest to produkt Antropiq.
+Antropiq jest autorem MCP, ale wśród klientów istnieją przede wszystkim też takie znane narzędzia programistyczne, jak Kursor, jak Klein, oczywiście jest też Wiesko, tak różnego pragnienia do Wieskoda.
+i wiele, wiele, wiele innych.
+Można też podłączyć CD Max'a oczywiście.
+Ta lista pewnie też będzie się z czasem powiększać.
+Dzięki temu, jeżeli stworzymy sobie jakiś serwer, który oferuje integrację z jakimś narzędziem, to nie jest on ograniczony do jakiejś określonej jednej platformy, ale będzie działało też wielu.
+Podobnie sprawa wygląda jeśli chodzi o serwery.
+jest pewna lista standardowych serwerów, jakby przygotowanych przez Antropika do serweru plików, do SQL, do Google Drive itd.
+Itd.
+Github, Githlub, tego typu podobne narzędzia, ale to jest wierzchołek góry lodowej, dlatego że istnieją całe platformy, marketplaces.
+serwerów MCP, które oferują różne narzędzia, różne konektory do różnych platform, oczywiście przeglądarki, żebym można było nasłać naszego LLM na jakąś stronę i zaczęła robić research, ale też platformi, slag, różne integracje do różnych platform, do różnych narzędzi, do baz danych, do jakiejś rozwiązań cloudowych, do wyszukiwania też jest cała masa itd.
+I podobnie z prawa wygląda i rzecz o klientów też jest ich sporo, do wyboru do kolorów, przy czym z mojego doświadczenia wynika, że najlepiej działa to wszystko w klodzie, chociaż też nie jest do końca idealnie, bo jednak MCP powstało w listopadzie i są dosyć nowe rozwiązanie, to wszystko jeszcze jest powiedzmy takie niewypieczone do końca, ale nie jest zle, znaczy nie ma dramatu, natomiast różne historyczne potrafią się zdarzyć, trzeba się troszeczkę uzbroić w cierpliwość,
+Różne narzędzia też wspierają różne aspekty, ale ja nie chcę wchodzić zbytnio w jakieś takie detale techniczne.
+Bardzo chciałbym pokazać jak to możemy sobie zrobić w praktyce na przykładzie projektu, który stworzyłem.
+Tu nazywa się My Manus, czyli jest takim odpowiednikiem manusa, którego można sobie odpalić lokalnie na swoim komputerze i część filmów, które widzieliście w tym szybkim montażu.
+Też była nagrada właśnie z jego pomocą i o tym w kolejnej części filmu.
+Znaczyniemy od takiego prostego przykładu.
+Przygotowując się do tego filmu, zebrałem z Twittera serię takich przykładów zrobionych przez inne osoby, z wykorzystaniem właśnie MCP, z wykorzystaniem cloda i integracji do innych narzędzi.
+No i ponieważ chciałem zrobić montaż, który już wiedzieliście, poprosiłem cloda z podpiętym majmanusem, czyli tak naprawdę z promptem oraz narzędziami, które są w projekcie.
+Poproszymość czerwnięcie tych wszystkich filmów zaproponowałem jakąś stronkę, na który jest jakiś tam Twitter czy też X wideo downloader, bo chciałem też pokazać jak to wygląda, kiedy model posługuje się przeklądarką.
+No i tutaj widzimy taki kilka charakterystycznych trzech wynichających z tego narzędzia.
+Po pierwsze.
+w tej chwili niestety nie ma dobrego mechanizmu, aby automatycznie zaakceptować wszystkie narzędzia, ponieważ Manus działa w Sandbox'ie, no to nie obawiamy się, że zrobimy jakiegoś krzywdy na komputerze, więc nic nie stoi na przykład, żeby możecie tych narzędzi automatycznie zaakceptować.
+Do wersji Cloud Desktop'a 080 taka możliwość zbyła w tej chwili w 081.
+i nie mam mimo nadzieję, że chwilowo, dlatego jak widać na tym filmie będą te pytania o akceptację narzędzia się pojawiały.
+Kolejną ceką taką charakterystyczną dla Manus wynikającą z tego promptu, który ma tam stworzone jest to, że w momencie kiedy ten prompt jest używany, to model stara się tworzyć na bieżąco plan.
+Plantem zapisuje do odlików markdown, jako takie taski, on będzie sobie potem odhaczał.
+Widać model odpalił sobie przeglądarkę na stronie, którą mu wskazałem i będzie teraz starał się te filmy ściągnąć.
+Trudność polega na tym, że on musi znaleźć odpowiednie pole.
+To nie zawsze się udaje za pierwszym razem.
+Czasami też przeszkadzają u różnych banerą, powinni nie sobie zamykać.
+Można mu z tym pomóc, można go zostawić samego, z tym to po prostu będzie dłużej trwało.
+Tutaj jak widać pierwsza próba się nie udała.
+Ciekawym aspektem jest to, że starasz się rozwiązać różnego rodzaju problemy pisząc skrypty, które są urchemione w kontekście danej strony, szuka właściwych elementów.
+No po prostu nie poddaję się i to jest właśnie fajne.
+Teraz sobie przebijemy do takich ciekawszych momentów.
+W tym momencie jest ciekawa historia, bo doszedł model do wniosku, że sobie zainplementuje bardziej efektywny sposób pobierania tych plików.
+Musiał się znudzić ochodzenie najwyrożniej po po stronie klikanie, szukanie i stworzył sobie plik download twitter video z piła i chce napisać taki script pythonowy, który załatwi to za niego.
+Ciekawe zachowanie, ale w sumie nie mogę go dziwić, zrobiłbym to samo jak miałbym klikać po ileś filmów tak po kolei, to walałbym sobie napisać jakiegoś skrypta do tego, ale z jakoś powodu stwierdził, że najprawdopodobniej możemy tutaj w jakiś rate limit trafić, zapewne ma rację, więc jakieś rozwiązanie na taką sytuację trzeba wymyślić.
+I w tym momencie doszedł do wniosku, że jednak to mu się nie uda, więc poszukał wersji takiego skryptu YouTube.pl, który służy do pobierania filmów z YouTube, ale też z innych serwisów streamingowych, który działa na Twitterze.
+No i zainstalował sobie paczkę, użył go i choć pobrał.
+Odznaczył sobie na to, że się udało.
+I pobrał kolejny.
+I kolejny.
+Ta metoda jest chyba najsprawniejsza.
+ale zorientował się, że niektóre mają rozmiar zero.
+To są te, które pobierał kurlem i które się nie ściągnęły w końcu względu na ten rate limit.
+To jest też ciekawe.
+Zorientował się, że pliki, niektóre są w zarobie długości, więc je teraz pobierze, no bo miał do zrobienia zadanie i robi je konkretnie, a nie na odwal.
+Takich zaskakujących zachowań modelu jest więcej i pewnie jeszcze będę je pokazywał na innych przykładach.
+No i poinformował, napisał podsumowanie.
+No i to tyle, jeżeli chodzi o ten pierwszy trywialny przykład.
+Kolejny przykład to takie bardziej zastosowanie przypominające Deep Research.
+Podajemy prompt, w promptie piszemy też, żeby model zadał pytania uszczegmówiające.
+W związku z tym model się dokładnie w taki sam sposób zachował, jak miało miejsce w przypadku Deep Researcha.
+czyli zada serii o pytań dodatkowych, tutaj research na temat CD projektu.
+No i tutaj widzimy, że model stworzy sobie strukturę katalogów i stworzy uplik to do, w którym podzielił projekt na właśnie na fazę zbierania danych, final informacji sforów, inwestorów, sporo sprzedaży i tak dalej, i tak dalej.
+Potem analizę tych danych, potem przygotowanie raportu, czy takie trzy główne części i każdy rozbity na serię mniejszych punktów.
+Najpierw pisał sobie źródła, z jakich będzie korzystał.
+Tutaj sobie odznaczył przygotowanie listy potencjalnych źródeł informacji, czyli że jedne zadanie zostało już odhaczone.
+Teraz wszedł sobie na stronę XD Projekt, tu będzie zbierał dane i tak dalej.
+No taki typowy, typowy research.
+Na bieżąco oczywiście tworzy pliki znanymi np.
+ofisial website info i wyrzucę te informacje, które zidentyfikował na stronie.
+to jest też przydatne, dlatego że jeżeli w pewnym momencie na przykład, przepełni nam się kontekst tej konwersacji i nie będzie możliwe jej kontynuowanie, to wszystkie te dane, które model zebrą na bieżąco, będą w plikach.
+I to wszystko właśnie dzieje się temu, co jest napisane w prąbcie Manusa.
+Bez tego model nie tworzyłby tych plików po prostu, realizowałby zadanie, że tak powiem,
+Po najmniejsze liniopolu, na wprost, tutaj jest to planowanie, egzekucja tego planu i to nam umożliwia właśnie zrestartowanie.
+Zadania, w momencie kiedy się przepełni kontekst, możemy powiedzieć modelowi, robić takie, takie zydanie w skazać katalog, w którym są dane, które zebrał.
+Zapoznaj się, kontynuuj, bo model będzie widział, który taszek był, że tak powiem, odhaczony, do którego momentu zadanie było zrealizowane.
+czyli tak najpierw zbierał sobie dane na stronie oficjalnej redów, potem przeszedł zgodnie z planem do zbierania informacji o produkcie zakończone, zbieranie informacji na temat produktów zakończone i przeszedł do zbierania informacji o stronach finansowych, jakich tam bankier, nie bankier tego typu strony, potem były fora dla pracowników, fora dla inwestorów itd.
+zgodnie z instrukcją,
+No i wynikiem tej pracy jest taki oto 35-stronnicowy raport zawierający straszczenie, wprowadzenie analiza opinii pracowników, analiza opinii inwestorów, analiza danych sprzedażowych, analiza portfolio produktowego, analiza słod, inne istotne informacje niefinansowe oraz wnioski i rekomendacje.
+Dodatkowo poprosiłem go jeszcze o zrobienie takiej wizualnej prezentacji.
+Cóż było takie kalki językowej, stunning visual presentation, czyli oszołamiającej prezentacji.
+Jak widać, postarał się, wszystkie rozdziały zostały tu zwierciedlone, wydarzenia zostały muścone na osi czasu.
+No generalnie wygląda to fajnie, można się w tym też łatwo połapać.
+zarówno link do katalogu z artefaktami, które wytworzył Manus podczas zbierania danych, samej prezentacji PDF oraz tej prezentacji wizualnej znajdują się w opisie filmu.
+Na koniec pokażę jeszcze, że można konstruować naprawdę długie i skomplikowane prąty składające się z wielu rzeczy do zrobienia z podzielnych na fazy elementów.
+I Manus będzie to realizował dlatego, że ma wbudowano funkcję właśnie planowania i dzielenia satysadań.
+Fajnie też widać jak w trakcie tej swojej pracy tworzy właśnie np.
+diagramy blokowe obrazujące różne komponenty, różne części systemu, interakcji między nimi.
+Także ciekawe jest to, że potrafi tworzyć wireframe do interfejsów graficznych również.
+w postaci Asciartu, co wygląda dość komitnie, ale też bardzo fajnie.
+Te projekty potrafią być olbrzymie, składające się z bardzo wielu plików.
+Wygląda to fajnie, można to nawet pokazać programistą, można to realizować samemu, ale on również potrafi projekty w ten sposób zaprojektowane sam realizować.
+Udało mi się w ten sposób na przykład stworzyć aplikacje do monitorowania sieci, tylko na przykład z backendu, z frontendu.
+Oczywiście nie jest to krótki, łatwy proces, składa się z wielu kroków.
+ale to wchodzimy trochę na obszar vibe codingu gdzie takie sesje trwają wiele godzin i naprawdę ciężko jest skrócić to streści to w kilkunastominutowym filmie nie chcę też przedłużać także bardzo dziękuję serdecznie za uwagę i zapraszam do obejrzenia kolejnego mojego filmu
