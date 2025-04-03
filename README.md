@@ -27,4 +27,6 @@ This project, made for the YouTube video "[DeepSeek 1776: Wolność Słowa - Chi
 - 📋 Strategic task planning and breakdown
 - ⚙️ Autonomous plan execution monitoring
 
-*Project Documentation*: Check out [`2025-04-03_Mój_Zrobiłem_Aystenta_AI_na_wzór_Manus_i_Deep_Research`](./2025-04-03_Mój_Zrobiłem_Aystenta_AI_na_wzór_Manus_i_Deep_Research) for implementation details and usage guide.
+*Project Documentation*: Check out 
+[Zrobiłem Asystenta AI na Wzór Manus i Deep Research](./2025-04-03_Zrobiłem_Asystenta_AI_na_wzór_Manus_i_Deep_Research/README.md)
+ for implementation details and usage guide.
